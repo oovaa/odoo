@@ -13,3 +13,10 @@
 - inspect the automatic fields (created at updated at and so)
 - actions (clicking buttons e.g new and so) types are menu, button, contextual object
 - menus and sub menus
+
+here if there is not form we cant update the records we can only view them
+<field name="view_mode">list,form</field>
+
+- groups layout in creation form
+- search view with suspended filter
+-
