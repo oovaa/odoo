@@ -1,6 +1,6 @@
 venv/
 **/.git/
+**/.git.bak/
 __pycache__/
 *.pyc
 *.log
-/var/lib/odoo/
