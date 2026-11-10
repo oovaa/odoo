@@ -1,0 +1,15 @@
+- create an odoo custom addons folder
+- add it to the path
+- create a module within it
+- create the 2 intital folders (views,models)
+- add **init**.py in models
+- add a py file for your entity and logic
+- import all of its content into the init file
+- create a view file
+- create the manifast
+- activate module
+- update the apps list
+- inspect the database for the new created model
+- inspect the automatic fields (created at updated at and so)
+- actions (clicking buttons e.g new and so) types are menu, button, contextual object
+- menus and sub menus

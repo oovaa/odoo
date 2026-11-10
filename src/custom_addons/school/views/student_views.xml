@@ -1,0 +1,64 @@
+<odoo>
+    <!-- Tree (List) View -->
+    <record id="student_tree_view" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="year"/>
+                <field name="suspended"/>
+                <field name="gender"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="student_form_view" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="year"/>
+                        <field name="suspended"/>
+                        <field name="gender"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action: opens student list/form -->
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Action: opens create form -->
+    <record id="student_create_action" model="ir.actions.act_window">
+        <field name="name">New Student</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- Root menu -->
+    <menuitem id="school_root_menu" name="School" sequence="10"/>
+
+    <!-- Sub menu container -->
+    <menuitem id="school_students_menu" name="Students"
+              parent="school_root_menu" sequence="10"/>
+
+    <!-- Nested: list -->
+    <menuitem id="school_students_list_menu" name="All Students"
+              parent="school_students_menu" action="student_action" sequence="10"/>
+
+    <!-- Nested: create -->
+    <menuitem id="student_creation_menu" name="New Student"
+              parent="school_students_menu" action="student_create_action" sequence="20"/>
+</odoo>
