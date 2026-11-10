@@ -6,7 +6,10 @@
     "category": "Managment",
     "depends": ["base"],
     "author": "Omar",
-    "data": ["views/student_views.xml"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/student_views.xml",
+    ],
     "demo": [],
     "installable": True,
     "application": True,
