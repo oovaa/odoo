@@ -1,80 +1,80 @@
 <odoo>
-    <!-- Tree (List) View -->
-    <record id="student_tree_view" model="ir.ui.view">
-        <field name="name">school.student.tree</field>
-        <field name="model">school.student</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-                <field name="age"/>
-                <field name="year"/>
-                <field name="suspended"/>
-                <field name="gender"/>
-            </list>
-        </field>
-    </record>
-
-    <!-- Form View -->
-    <record id="student_form_view" model="ir.ui.view">
-        <field name="name">school.student.form</field>
-        <field name="model">school.student</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group string="basic info">
-                        <field name="name"/>
-                        <field name="age"/>
-                        <field name="year"/>
-                    </group>
-                    <group string="status">
-                        <field name="suspended"/>
-                        <field name="gender"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- Search View -->
-    <record id="student_search_view" model="ir.ui.view">
-        <field name="name">school.student.search</field>
-        <field name="model">school.student</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="name"/>
-                <field name="gender"/>
-                <filter string="Suspended" name="suspended" domain="[('suspended','=',True)]"/>
-            </search>
-        </field>
-    </record>
-
-    <!-- Action: opens student list/form -->
-    <record id="student_action" model="ir.actions.act_window">
-        <field name="name">Students</field>
-        <field name="res_model">school.student</field>
-        <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="student_search_view"/>
-    </record>
-
-    <!-- Action: opens create form -->
-    <record id="student_create_action" model="ir.actions.act_window">
-        <field name="name">New Student</field>
-        <field name="res_model">school.student</field>
-        <field name="view_mode">form</field>
-    </record>
-
-    <!-- Root menu -->
-    <menuitem id="school_root_menu" name="School" sequence="10"/>
-
-    <!-- Sub menu container -->
-    <menuitem id="school_students_menu" name="Students"
-              parent="school_root_menu" sequence="10"/>
-
-    <!-- Nested: list -->
-    <menuitem id="school_students_list_menu" name="All Students"
-              parent="school_students_menu" action="student_action" sequence="10"/>
-
-    <!-- Nested: create -->
-    <menuitem id="student_creation_menu" name="New Student"
-              parent="school_students_menu" action="student_create_action" sequence="20"/>
+  <!-- Tree (List) View -->
+  <record id="student_tree_view" model="ir.ui.view">
+    <field name="name">school.student.tree</field>
+    <field name="model">school.student</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"></field>
+        <field name="age"></field>
+        <field name="year"></field>
+        <field name="suspended"></field>
+        <field name="gender"></field>
+        <field name="friends_ids"></field>
+      </list>
+    </field>
+  </record>
+  <!-- Form View -->
+  <record id="student_form_view" model="ir.ui.view">
+    <field name="name">school.student.form</field>
+    <field name="model">school.student</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group string="basic info">
+            <field name="name"></field>
+            <field name="age"></field>
+            <field name="year"></field>
+          </group>
+          <group string="status">
+            <field name="suspended"></field>
+            <field name="gender"></field>
+          </group>
+          <group string="Friends">
+            <field name="friends_ids" widget="many2many_tags"></field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- Search View -->
+  <record id="student_search_view" model="ir.ui.view">
+    <field name="name">school.student.search</field>
+    <field name="model">school.student</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"></field>
+        <field name="gender"></field>
+        <filter domain="[('suspended','=',True)]" name="suspended" string="Suspended"></filter>
+      </search>
+    </field>
+  </record>
+  <!-- Action: opens student list/form -->
+  <record id="student_action" model="ir.actions.act_window">
+    <field name="name">Students</field>
+    <field name="res_model">school.student</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="student_search_view"></field>
+  </record>
+  <!-- Action: opens create form -->
+  <record id="student_create_action" model="ir.actions.act_window">
+    <field name="name">New Student</field>
+    <field name="res_model">school.student</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record id="suspended_student_list" model="ir.actions.act_window">
+    <field name="name">Suspended Students</field>
+    <field name="res_model">school.student</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('suspended','=',True)]</field>
+  </record>
+  <!-- Root menu -->
+  <menuitem id="school_root_menu" name="School" sequence="10"></menuitem>
+  <!-- Sub menu container -->
+  <menuitem id="school_students_menu" name="Students" parent="school_root_menu" sequence="10"></menuitem>
+  <!-- Nested: list -->
+  <menuitem action="student_action" id="school_students_list_menu" name="All Students" parent="school_students_menu" sequence="10"></menuitem>
+  <!-- Nested: create -->
+  <menuitem action="student_create_action" id="student_creation_menu" name="New Student" parent="school_students_menu" sequence="20"></menuitem>
+  <menuitem action="suspended_student_list" id="suspended_students_menue" name="Suspended Students" parent="school_students_menu" sequence="13"></menuitem>
 </odoo>
