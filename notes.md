@@ -19,6 +19,8 @@ here if there is not form we cant update the records we can only view them
 
 - groups layout in creation form
 - search view with suspended filter
-- students menue with domain filter only suspended show
-- create a relation from a student to a student name it friends make it many to many.
-- add a computed field to calculate how many friends the student has on the fly
+- students menue with domain filter only suspended show - domain
+- create a relation from a student to a student name it friends make it many to many. - relations
+- add a computed field to calculate how many friends the student has on the fly - computed field
+- added dependency to friends count
+- added an on change in the name property

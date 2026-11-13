@@ -1,3 +1,4 @@
+from odoo import api
 from odoo.fields import Boolean, Char, Integer, Many2many, Selection
 from odoo.models import Model
 
@@ -21,3 +22,17 @@ class Student(Model):
         "friend_id",
         string="Friends",
     )
+    friends_count = Integer(
+        string="Friends Count",
+        compute="_compute_friends",
+        store=False,
+    )
+
+    @api.onchange("name")
+    def on_change_name(self):
+        print("name changed to:", self.name)
+
+    @api.depends("friends_ids")
+    def _compute_friends(self):
+        for student in self:
+            student.friends_count = len(student.friends_ids)
